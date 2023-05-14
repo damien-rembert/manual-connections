@@ -151,6 +151,10 @@ while true; do
     echo -e Expires on'\t'"${red}$(date --date="$expires_at")${nc}"
     echo -e "\n${green}This script will need to remain active to use port forwarding, and will refresh every 15 minutes.${nc}\n"
 
+    # write port to file
+    echo $port > current_port
+    ./update_opent_port.sh
+
     # sleep 15 minutes
     sleep 900
 done
