@@ -5,9 +5,11 @@ current_port=$(cat current_port)
 open_port=$(cat open_port)
 qb_listen_port=$(curl -s http://localhost:7676/api/v2/app/preferences | jq '.listen_port')
 
-if [ $current_port -eq $open_port ]; then
-    echo 'The current port is open in UFW.'
-    if [ ! $current_port -eq $qb_listen_port ]; then 
+if [ $current_port -eq $open_port ]
+then
+echo 'The current port is open in UFW.'
+    if [ ! $current_port -eq $qb_listen_port ]
+    then 
         echo 'Wrong QB port. Changing now.'
         curl -s -d "json=%7B%22listen_port%22%3A$current_port%7D" http://localhost:7676/api/v2/app/setPreferences
     fi
