@@ -153,7 +153,7 @@ while true; do
 
     # write port to file
     echo $port > current_port
-    ./update_opent_port.sh
+    ./update_open_port.sh
 
     # sleep 15 minutes
     sleep 900
